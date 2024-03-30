@@ -1,0 +1,26 @@
+<!-- <form id="productForm">
+    <div>Name<input type="text" id="name" placeholder="name of product" name="name" /></div>
+    <div>Price <input type="text" id="price" placeholder="price of product" name="price" /></div>
+    <div>Quantity <input type="text" id="quantity" placeholder="quantit of product" name="quantity" /></div>
+</form> -->
+
+
+<div class="productForm">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name"
+        placeholder="Enter the name">
+</div>
+
+<div class="productForm">
+    <label for="price">Price</label>
+    <input type="text" class="form-control" id="price" [(ngModel)]="model.price" name="price"
+        placeholder="Enter the price">
+</div>
+
+<div class="productForm">
+    <label for="quantity">Quantity</label>
+    <input type="text" class="form-control" id="quantity" [(ngModel)]="model.quantity" name="quantity"
+        placeholder="Enter the quantity">
+</div>
+
+<button (click)="submitProduct()">submit</button>
