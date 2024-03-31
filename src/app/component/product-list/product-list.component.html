@@ -1,21 +1,28 @@
+
+
+<app-product-search></app-product-search>
+
+<a href="http://localhost:4201/createProduct">Create Product</a>
+<a routerLink="createProduct">Create Product</a>
 <table>
-    <thead>
+  <thead>
         <tr>
-            <th>name</th>
-            <th>price</th>
-            <th>quantity</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @for (item of productList;track item.name){
+
+    @for (item of productList;track item.name){
         <tr>
             <td>{{item.name}}</td>
             <td>{{item.price}}</td>
             <td>{{item.quantity}}</td>
             <td>
-                <button (click)="deleteProduct(item._id)">delete</button>
-                <button (click)="editProduct(item._id,item.name, item.price, item.quantity)">edit</button>
+                <button (click)="deleteProduct(item._id)">Delete</button>
+                <button (click)="editProduct(item._id,item.name, item.price, item.quantity)">Edit</button>
             </td>
 
         </tr>
