@@ -6,4 +6,5 @@ import {ProductListComponent} from "./component/product-list/product-list.compon
 export const routes: Routes = [
   {path: "", component: ProductListComponent, pathMatch: "full"},
   {path: "createProduct", component: ProductFormComponent},
+  {path: "updateProduct", component: ProductFormComponent},
 ];

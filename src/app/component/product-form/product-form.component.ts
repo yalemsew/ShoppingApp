@@ -26,10 +26,13 @@ export class ProductFormComponent {
   //     this.action = 'edit';
   //   }
   // }
-
-
   constructor(public productService: ProductService) {
     console.log("ProductFormComponent constructor");
+    // initialize the model with the emitted model from the service if it exists
+    this.model = this.productService.emitted_model;
+    if (this.model?.id) {
+      this.action = 'edit';
+    }
   }
 
 
@@ -44,6 +47,7 @@ export class ProductFormComponent {
   }
 
   ngOnDestroy() {
+    this.productService.emitted_model = new Product();
     console.log("ProductFormComponent ngOnDestroy");
   }
 

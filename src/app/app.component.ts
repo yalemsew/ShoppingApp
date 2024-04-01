@@ -3,7 +3,7 @@ import {
   Input,
   Output,
   ViewChild,
-  EventEmitter,
+  EventEmitter, ViewEncapsulation,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './component/product-list/product-list.component';
@@ -21,6 +21,7 @@ import {Util} from "./services/util";
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   title = 'Shopping_App';
@@ -38,7 +39,7 @@ export class AppComponent {
     console.log("========AppComponent ngOnInit========");
 
   }
-  ngOnDestory() {
+  ngOnDestroy() {
    Util.logD("AppComponent");
   }
 

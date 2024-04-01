@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Product} from "./productModel";
 
 @Injectable({
   providedIn: 'root',
@@ -6,10 +7,12 @@ import { Injectable } from '@angular/core';
 export class ProductService {
 
   //this model received from the product-list.component.ts
-  public emitted_model: any = [];
+  public emitted_model: any = new Product();
   public request:string = '';
 
-  constructor() {}
+  constructor() {
+    console.log("new service instance created")
+  }
   async getProducts() {
     const products = await fetch('http://localhost:3000/api/products');
     return await products.json();
@@ -19,6 +22,7 @@ export class ProductService {
       method: 'put',
     });
   }
+
   async deleteProduct(id: any) {
     const product = await fetch(`http://localhost:3000/api/products/${id}`, {
       method: 'delete',

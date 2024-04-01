@@ -1,26 +1,31 @@
-import {Component, EventEmitter, Output, SimpleChange} from '@angular/core';
+import {Component, EventEmitter, Output, SimpleChange, ViewEncapsulation} from '@angular/core';
 import {ProductService} from '../../services/product.service';
 import {Product} from '../../services/productModel';
 import {Util} from "../../services/util";
 import {ProductSearchComponent} from "./product-search/product-search.component";
 import {Router, RouterLink} from "@angular/router";
+import {MatIcon} from "@angular/material/icon";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
+
 
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [ProductSearchComponent, RouterLink],
+  imports: [ProductSearchComponent, RouterLink, MatProgressSpinner],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
 export class ProductListComponent {
   productList: any[] = [];
+  flag: boolean = true;
   @Output() productOutput = new EventEmitter<any>();
 
   constructor(private router: Router, public productService: ProductService) {
     this.productService.getProducts().then((data) => {
       {
         this.productList = data;
+        this.flag = false;
       }
     });
   }
@@ -37,13 +42,17 @@ export class ProductListComponent {
   editProduct(id: any, name: any, price: any, quantity: any) {
     this.productService.emitted_model = new Product(id, name, price, quantity);
     this.productService.request = 'edit';
-    this.router.navigate(['/createProduct'])
-
+    this.router.navigate(['/updateProduct'])
     // this.productOutput.emit(model);
     // this.productService.editProduct(id).then((data) => {
     //   {
     //     console.log(data);
     //   }
     // });
+  }
+  createProduct() {
+    this.productService.request = 'add';
+    this.router.navigate(['/createProduct'])
+    this.productService.emitted_model = new Product();
   }
 }

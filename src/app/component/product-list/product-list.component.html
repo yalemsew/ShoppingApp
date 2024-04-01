@@ -2,8 +2,9 @@
 
 <app-product-search></app-product-search>
 
-<a href="http://localhost:4201/createProduct">Create Product</a>
-<a routerLink="createProduct">Create Product</a>
+<!--<button><a href="http://localhost:4201/createProduct">Create Product</a>-->
+<!--</button>-->
+<button (click)="createProduct()">Create Product</button>
 <table>
   <thead>
         <tr>
@@ -14,7 +15,6 @@
         </tr>
     </thead>
     <tbody>
-
     @for (item of productList;track item.name){
         <tr>
             <td>{{item.name}}</td>
@@ -30,3 +30,7 @@
         }
     </tbody>
 </table>
+@if(flag){
+<mat-spinner [diameter]="20">search</mat-spinner>
+<div>loading...</div>
+}

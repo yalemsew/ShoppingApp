@@ -15,9 +15,9 @@ import {ProductService} from "../../../services/product.service";
 export class ProductSearchComponent {
   inputValue: string = '';
   outputValue: any[] = [];
-  productService = new ProductService();
 
-
+constructor(public productService: ProductService) {
+}
   productSearch() {
      this.productService.findProduct(this.inputValue).then((data) => {
       {
