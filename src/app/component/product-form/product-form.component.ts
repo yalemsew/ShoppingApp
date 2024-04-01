@@ -29,16 +29,23 @@ export class ProductFormComponent {
   constructor(public productService: ProductService) {
     console.log("ProductFormComponent constructor");
     // initialize the model with the emitted model from the service if it exists
-    this.model = this.productService.emitted_model;
-    if (this.model?.id) {
-      this.action = 'edit';
-    }
+    // this.model = this.productService.emitted_model;
+    this.productService.productBObservable$.subscribe((data) => {
+      if (data?.id) {
+        this.action = 'edit';
+        this.model = data;
+      }
+    })
+
   }
 
 
   // @ts-ignore
 
   ngOnInit() {
+    // this.productService.productObservable$.subscribe((data) => {
+    //   this.model = data;
+    // })
     console.log("ProductFormComponent ngOnInit");
   }
 

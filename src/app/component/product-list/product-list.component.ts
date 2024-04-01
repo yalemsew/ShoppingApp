@@ -40,15 +40,10 @@ export class ProductListComponent {
     this.productService.deleteProduct(id);
   }
   editProduct(id: any, name: any, price: any, quantity: any) {
-    this.productService.emitted_model = new Product(id, name, price, quantity);
+    const productData = new Product(id, name, price, quantity);
     this.productService.request = 'edit';
+    this.productService.productBSubject$.next(productData);
     this.router.navigate(['/updateProduct'])
-    // this.productOutput.emit(model);
-    // this.productService.editProduct(id).then((data) => {
-    //   {
-    //     console.log(data);
-    //   }
-    // });
   }
   createProduct() {
     this.productService.request = 'add';

@@ -2,7 +2,7 @@
   <input type="text" [(ngModel)]="inputValue" placeholder="Enter value">
   <button (click)="productSearch()">Search</button>
 
-  @if(outputValue){
+  @if(outputValue) {
     @for(item of outputValue;track item.name){
       <div>{{item.name}}</div>
     }
