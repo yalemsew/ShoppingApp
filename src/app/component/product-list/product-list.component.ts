@@ -4,7 +4,6 @@ import {Product} from '../../services/productModel';
 import {Util} from "../../services/util";
 import {ProductSearchComponent} from "./product-search/product-search.component";
 import {Router, RouterLink} from "@angular/router";
-import {MatIcon} from "@angular/material/icon";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 
@@ -22,7 +21,7 @@ export class ProductListComponent {
   @Output() productOutput = new EventEmitter<any>();
 
   constructor(private router: Router, public productService: ProductService) {
-    this.productService.getProducts().then((data) => {
+    this.productService.getProducts().subscribe((data) => {
       {
         this.productList = data;
         this.flag = false;
